@@ -136,6 +136,15 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# setup AWS S3 as the storage for static and media
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# define the AWS S3 bucket to use for storage
+AWS_STORAGE_BUCKET_NAME = 'eventfinder.bendog'
+AWS_DEFAULT_ACL = 'public-read'
+
+
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
